@@ -1,33 +1,51 @@
-# Webpack Frontend Starterkit
+# lit-css-var decorator
 
-[![Dependabot badge](https://flat.badgen.net/dependabot/wbkd/webpack-starter?icon=dependabot)](https://dependabot.com/)
+### A decorator to bind element property to a css variable.
 
-A lightweight foundation for your next webpack based frontend project.
+##### Installation 
+`npm i -S lit-css-var`
 
-### Installation
-
-```sh
-npm install
+##### Usage
+```javascript
+// component.js
+import {cssVar} from 'lit-css-var';
+...
+@cssVar() <cssVarName> = <initialValue>
+... 
 ```
-
-### Start Dev Server
-
-```sh
-npm start
+```css
+// component.css or in component style
+...
+<cssPropery>: var(--<cssVarName>);
 ```
+##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
+For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) in your `.babelrc` config file.
 
-### Build Prod Version
 
-```sh
-npm run build
+##### Example
+```javascript
+
+import {LitElement, html, css, customElement} from 'lit-element';
+import {cssVar} from 'lit-css-var';
+
+@customElement('my-component')
+class MyComponent extends LitElement {
+
+  @cssVar() buttonColor = 'red';
+
+  static styles = [css`
+    button {
+      background-color: var(--buttonColor);
+    }
+  `];
+
+  render () {
+    return html`
+      <button @click="${() => this.buttonColor = this.buttonColor === 'red' ? 'blue' : 'red'}">
+        button color: ${this.buttonColor}
+      </button>
+    `;
+  }
+}
+
 ```
-
-### Features:
-
-- ES6 Support via [babel](https://babeljs.io/) (v7)
-- JavaScript Linting via [eslint](https://eslint.org/)
-- SASS Support via [sass-loader](https://github.com/jtangelder/sass-loader)
-- Autoprefixing of browserspecific CSS rules via [postcss](https://postcss.org/) and [postcss-preset-env](https://github.com/csstools/postcss-preset-env)
-- Style Linting via [stylelint](https://stylelint.io/)
-
-When you run `npm run build` we use the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to move the css to a separate file. The css file gets included in the head of the `index.html`.
