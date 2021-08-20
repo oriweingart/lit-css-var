@@ -32,13 +32,13 @@ class MyComponent extends LitElement {
 ```
 
 
-#### Installation 
+### Installation 
 `npm i -S lit-css-var`
 
-#### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
+##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
 For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) in your `.babelrc` config file.
 
-#### Usage
+### Usage
 ```javascript
 // component.js
 import {cssVar} from 'lit-css-var';
@@ -52,4 +52,4 @@ import {cssVar} from 'lit-css-var';
 <cssPropery>: var(--<cssVarName>);
 ```
 
-#### Options
+### Options
