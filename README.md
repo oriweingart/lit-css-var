@@ -2,27 +2,7 @@
 
 ### A decorator to bind element property to a css variable.
 
-##### Installation 
-`npm i -S lit-css-var`
 
-##### Usage
-```javascript
-// component.js
-import {cssVar} from 'lit-css-var';
-...
-@cssVar() <cssVarName> = <initialValue>
-... 
-```
-```css
-// component.css or in component style
-...
-<cssPropery>: var(--<cssVarName>);
-```
-##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
-For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) in your `.babelrc` config file.
-
-
-##### Example
 ```javascript
 
 import {LitElement, html, css, customElement} from 'lit-element';
@@ -49,3 +29,26 @@ class MyComponent extends LitElement {
 }
 
 ```
+
+
+##### Installation 
+`npm i -S lit-css-var`
+
+##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
+For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) in your `.babelrc` config file.
+
+##### Usage
+```javascript
+// component.js
+import {cssVar} from 'lit-css-var';
+...
+@cssVar() <cssVarName> = <initialValue>
+... 
+```
+```css
+// component.css or in component style
+...
+<cssPropery>: var(--<cssVarName>);
+```
+
+##### Options
