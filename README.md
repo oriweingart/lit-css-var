@@ -1,7 +1,7 @@
 # lit-css-var decorator
 
 
-### A @decorator to bind [litElement](https://lit-element.polymer-project.org/) property to a css variable.
+### A @decorator to bind [litElement](https://lit-element.polymer-project.org/) property to a css variable 💅
 
 
 ```javascript
