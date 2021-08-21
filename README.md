@@ -46,7 +46,7 @@ import {cssVar} from 'lit-css-var';
 ...
 @cssVar() <cssVarName> = <initialValue>
 ...
-static styles = [css`
+  css`
     <cssProperty>: var(--<cssVarName>);
   `]; 
 ```
