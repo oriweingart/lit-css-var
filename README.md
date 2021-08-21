@@ -55,5 +55,5 @@ import {cssVar} from 'lit-css-var';
 
 ### Options
 Decorate can get options object with following properties:
-- `observeCss` boolean. default false. When true css-var decorator will become 2-way databining and update the element property when the css var was changed.
- We recomend to avoid this option as it can cause performance issues.
+- `observeCss` boolean. default `false`. When true css-var decorator will become 2-way databining and update the element property when the css var was changed.
+ It's recommend to avoid this option as it can cause performance issues.
