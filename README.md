@@ -45,12 +45,10 @@ For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/b
 import {cssVar} from 'lit-css-var';
 ...
 @cssVar() <cssVarName> = <initialValue>
-... 
-```
-```css
-// component.css or in component style
 ...
-<cssPropery>: var(--<cssVarName>);
+static styles = [css`
+    <cssProperty>: var(--<cssVarName>);
+  `]; 
 ```
 
 ### Options
