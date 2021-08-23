@@ -1,6 +1,6 @@
 {
   "name": "lit-css-var",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A decorator to bind element property to a css variable.",
   "scripts": {
     "lint": "eslint .",

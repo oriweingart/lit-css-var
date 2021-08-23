@@ -32,7 +32,7 @@ class MyComponent extends LitElement {
 
 ```
 
-### [Demo](https://codesandbox.io/s/lit-css-var-example-8gcbo)
+### [Demo](https://codesandbox.io/s/lit-css-var-example-forked-9nf59?file=/src/index.js)
 
 ### Installation 
 `npm i lit-css-var`
