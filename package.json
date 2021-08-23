@@ -368,7 +368,7 @@
     "path-to-regexp": "^0.1.7",
     "picomatch": "^2.3.0",
     "path-type": "^4.0.0",
-    "pify": "^4.0.1",
+    "pify": "^5.0.0",
     "pinkie": "^2.0.4",
     "pinkie-promise": "^2.0.1",
     "pkg-dir": "^4.2.0",
