@@ -4,8 +4,12 @@
   "description": "A decorator to bind element property to a css variable.",
   "scripts": {
     "lint": "eslint .",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-    "start": "webpack serve --config webpack/webpack.config.dev.js"
+    "start": "webpack serve --config webpack/webpack.config.dev.js",
+    "build-test": "webpack --config webpack/webpack.config.test.js",
+    "test-server": "./node_modules/http-server/bin/http-server --path /build/",
+    "build-test-server": "npm run test-server & npm urn build-test",
+    "specs": "./node_modules/mocha/bin/mocha tests/*.spec.js",
+    "test": "npm run build-test-server && npm run specs"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,7 @@
     "@babel/preset-env": "^7.15.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "core-js": "^3.16.1",
@@ -40,8 +45,11 @@
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "http-server": "^13.0.1",
     "lit-element": "^2.5.1",
     "lit-html": "^1.4.1",
+    "mocha": "^9.1.1",
+    "nightmare": "^3.0.2",
     "style-loader": "^3.2.1",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2",

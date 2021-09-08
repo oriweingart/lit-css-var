@@ -12,15 +12,14 @@ class Example2 extends LitElement {
     }
   `];
 
-  onKeyUp({ target: { value }}) {
+  onChange({ target: { value }}) {
     this.fontSize = `${Number.parseInt(value) || 15}px`;
   }
 
   render () {
     return html`
       <label>font size is ${this.fontSize}</label>  
-      <input .value="${this.fontSize}" @keyup="${this.onKeyUp}" />
+      <input .value="${this.fontSize}" @change="${this.onChange}" />
     `;
   }
-
 }
