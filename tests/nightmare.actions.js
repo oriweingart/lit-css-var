@@ -1,5 +1,5 @@
 const Nightmare = require('nightmare');
-const nightmare = Nightmare({ show: true });
+const nightmare = Nightmare({ show: false });
 // Nightmare reusable actions
 Nightmare.action('example1GetColor', function(done) {
     this.evaluate_now(() => window.getComputedStyle(document.querySelector('example-1').shadowRoot.querySelector('button')).color, done);
