@@ -18,9 +18,9 @@ export function cssVar(options = {}) {
                 if (isFunction(element.initializer)) {
                     this[element.key] = element.initializer.call(this);
                 }
-                // This is a slow performance feature which
-                // will update the component property when
-                // the css var was update.
+                // Using see option will turn on two-way binding from setting css var from code
+                // and synced it to the element property.
+                // it might cause performance issues.
                 if (options.observeCss) {
                     const propName = element.key;
                     // Keep a ref to css vars on _cssVarsProperties array
@@ -43,11 +43,9 @@ export function cssVar(options = {}) {
                         return this[key];
                     },
                     set(value) {
-                        // Set the property
+                        // Sync property with css var and render.
                         this[key] = value;
-                        // Set the css var
                         this.style.setProperty(propNameToCssVarName(propName), value);
-                        // Update element
                         this.requestUpdate();
                     },
                     configurable: true,
