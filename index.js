@@ -43,11 +43,9 @@ export function cssVar(options = {}) {
                         return this[key];
                     },
                     set(value) {
-                        // Set the property
+                        // Sync property with css var and render.
                         this[key] = value;
-                        // Set the css var
                         this.style.setProperty(propNameToCssVarName(propName), value);
-                        // Update element
                         this.requestUpdate();
                     },
                     configurable: true,
