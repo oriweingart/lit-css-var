@@ -26,11 +26,11 @@ class Example3 extends LitElement {
 
   render () {
     return html`
-      <span>text color is ${this.color}</span>
-      <button @click="${this.changeColorByProperty}">
+      <label>text color is ${this.color}</label>
+      <button @click="${this.changeColorByProperty}" id="js-prop-btn">
         set color from property
       </button>
-      <button @click="${this.changeColorByCssVar}">
+      <button @click="${this.changeColorByCssVar}" id="css-var-btn">
         set color from css var
       </button>
     `;

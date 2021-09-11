@@ -1,20 +1,37 @@
 const Nightmare = require('nightmare');
-const nightmare = Nightmare({ show: false });
+const nightmare = Nightmare({ show: true });
 // Nightmare reusable actions
-Nightmare.action('example1GetColor', function(done) {
-    this.evaluate_now(() => window.getComputedStyle(document.querySelector('example-1').shadowRoot.querySelector('button')).color, done);
+Nightmare.action('setTest', function(testName, done) {
+    this.evaluate_now((testName) => (window._currentTest = testName), done, testName);
+    this.wait(testName);
 });
-Nightmare.action('example1GetText', function(done) {
-    this.evaluate_now(() => document.querySelector('example-1').shadowRoot.querySelector('button').innerText, done);
+Nightmare.action('getColor', function(done) {
+    this.evaluate_now(() => window.getComputedStyle(document.querySelector(`${window._currentTest}`).shadowRoot.querySelector('button')).color, done);
 });
-Nightmare.action('example1ClickButton', function(done) {
-    this.evaluate_now(() => document.querySelector('example-1').shadowRoot.querySelector('button').click(), done);
+Nightmare.action('getText', function(done) {
+    this.evaluate_now(() => document.querySelector(`${window._currentTest}`).shadowRoot.querySelector('button').innerText, done);
 });
-Nightmare.action('example2GetTextSize', function(done) {
-    this.evaluate_now(() => window.getComputedStyle(document.querySelector('example-2').shadowRoot.querySelector('label'))['font-size'], done);
+Nightmare.action('getLabel', function(done) {
+    this.evaluate_now(() => document.querySelector(`${window._currentTest}`).shadowRoot.querySelector('label').innerText, done);
 });
-Nightmare.action('example2GetText', function(done) {
-    this.evaluate_now(() => document.querySelector('example-2').shadowRoot.querySelector('label').innerText, done);
+Nightmare.action('clickButton', function(done) {
+    this.evaluate_now(() => document.querySelector(`${window._currentTest}`).shadowRoot.querySelector('button').click(), done);
+});
+Nightmare.action('getTextSize', function(done) {
+    this.evaluate_now(() => window.getComputedStyle(document.querySelector(`${window._currentTest}`).shadowRoot.querySelector('label'))['font-size'], done);
+});
+Nightmare.action('clickButtonById', function(id, done) {
+    this.evaluate_now((id) => document.querySelector(`${window._currentTest}`).shadowRoot.getElementById(id).click(), done, id);
+});
+Nightmare.action('getColors', function(done) {
+    this.evaluate_now(() => {
+        const jsPropBtnColor = window.getComputedStyle(document.querySelector(`${window._currentTest}`).shadowRoot.getElementById('js-prop-btn')).color;
+        const cssVarBtnColor = window.getComputedStyle(document.querySelector(`${window._currentTest}`).shadowRoot.getElementById('css-var-btn')).color;
+        return {
+            jsPropBtnColor,
+            cssVarBtnColor
+        };
+    }, done);
 });
 
 module.exports = nightmare;
