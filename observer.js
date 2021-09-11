@@ -1,5 +1,9 @@
-import {propNameToCssVarName} from "./helper";
+import {isStyleMutation, propNameToCssVarName} from "./helper";
 
+/**
+ * Observer option to watch style changes on current node
+ * @type {{subtree: boolean, attributes: boolean, childList: boolean, attributeFilter: [string]}}
+ */
 export const OBSERVER_OPTIONS = {
     attributeFilter: ["style"],
     attributes: true,
@@ -12,16 +16,16 @@ export const OBSERVER_OPTIONS = {
  * @returns {MutationObserver}
  */
 export const createObserver = () => new MutationObserver(mutations => {
-    mutations.forEach(({attributeName, target}) => {
-        if (attributeName === 'style') {
+    mutations
+        .filter(isStyleMutation)
+        .forEach(({target}) => {
             target._cssVarsProperties.forEach((cssVarNameInList) => {
-                // In case of style change -> update the js property (for 2-way binding)
+                // Update the element property (for 2-way binding)
                 const cssValue = target.style.getPropertyValue(propNameToCssVarName(cssVarNameInList));
                 const propValue = target[cssVarNameInList];
                 if (cssValue !== propValue) {
                     target[cssVarNameInList] = cssValue; // TODO: remove left whitespaces?
                 }
             });
-        }
-    });
+        });
 });
