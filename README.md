@@ -2,9 +2,7 @@
 
 
 ### @decorator to bind [litElement](https://lit-element.polymer-project.org/) property to a css variable 💅
-  
-  
-  
+    
 ```javascript
 
 import {LitElement, html, css, customElement} from 'lit-element';
@@ -31,12 +29,14 @@ class MyComponent extends LitElement {
 }
 
 ```
-
-### [Demo](https://codesandbox.io/s/lit-css-var-example-forked-9nf59?file=/src/index.js)
-
-### Installation 
+  
+### [Demo](https://codesandbox.io/s/lit-css-var-example-forked-9nf59?file=/src/scripts/example_1.js)
+  
+### Installation
+   
 `npm i lit-css-var`
-##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.
+  
+##### As this feature currently support only @decorator nutation, it most be used with a transpiler supporting decorators.  
 For babel use [`@babel/plugin-proposal-decorators`](https://babeljs.io/docs/en/babel-plugin-proposal-decorators) in your `.babelrc` config file.
 
 ### Usage
